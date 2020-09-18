@@ -3,7 +3,7 @@ require('../vendor/autoload.php');
 ?>
 
 <?php
-
+$msg = "";
 if (isset($_POST['submit'])) {
 
 
