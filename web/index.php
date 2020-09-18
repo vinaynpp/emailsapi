@@ -3,7 +3,7 @@ require('../vendor/autoload.php');
 ?>
 
 <?php
-$_POST = json_decode(file_get_contents('php://input'), true);
+
 
 $msg = "";
 if (isset($_POST['submit'])) {
