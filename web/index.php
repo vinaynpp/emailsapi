@@ -3,45 +3,8 @@ require('../vendor/autoload.php');
 ?>
 
 <?php
-$_POST = json_decode(file_get_contents('php://input'), true);
 
-$msg = "";
-if (isset($_POST)) {
-
-
-    $username =  $_POST['username'];
-    $khudkaemail =  $_POST['meraemail'];
-    $khudkapassword =  $_POST['merapswd'];
-    $email =  $_POST['email'];
-    $subject =  $_POST['subject'];
-    $html =  $_POST['contents'];
-
-
-    include('smtp/PHPMailerAutoload.php');
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host = "smtp.gmail.com";
-    $mail->Port = 587;
-    $mail->SMTPSecure = "tls";
-    $mail->SMTPAuth = true;
-    $mail->Username = $khudkaemail;
-    $mail->Password = $khudkapassword;
-    $mail->SetFrom($khudkaemail);
-    $mail->addAddress($email);
-    $mail->IsHTML(true);
-    $mail->Subject = $subject;
-    $mail->Body = $html;
-    $mail->SMTPOptions = array('ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => false
-    ));
-    if ($mail->send()) {
-        $msg = "mail has been sent";
-    } else {
-        $msg = "mail has not been sent";
-    }
-}if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
 
     $username =  $_POST['username'];
